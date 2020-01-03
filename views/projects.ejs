@@ -4,7 +4,9 @@
   <title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href='/styles/header.css'>
+  <link rel="stylesheet" type="text/css" href='/styles/projects.css'>
  <link href="https://fonts.googleapis.com/css?family=Kulim+Park&display=swap" rel="stylesheet">
+
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="/scripts/slideshow.js"></script>
 </head>
@@ -12,7 +14,23 @@
 
 <div id="main">
   <% include ./partials/_header.ejs %>
-  <p>Hello World</p>
+
+  <div id="projectsCont">
+
+    <div class="card" style="width: 18rem;">
+      <img src="/images/me.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Bar Chart</h5>
+          <p class="card-text">An application to create a barchart allowing a user to input values and graphically represent them</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">HTML, CSS, Jquery</li>
+          <li class="list-group-item"><a href="/barchart" class="card-link">Demo Application</a>
+          <li class="list-group-item"><a href="#" class="card-link">Github Documentation</a></li>
+        </ul>
+    </div>
+
+  </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
