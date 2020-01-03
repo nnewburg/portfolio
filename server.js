@@ -12,12 +12,13 @@ const PORT = 8080;
 const path = require('path');
 
 app.set("view engine", "ejs");
+
 app.set('views', [path.join(__dirname, 'views'),
                       path.join(__dirname, 'views/barChart/')]);
+
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, '/public')));
-
-app.get('views');
 
 
 
@@ -30,7 +31,7 @@ app.get("/projects", (req, res) => {
   })
 
 app.get("/barChart", (req, res) => {
-     return res.render("/barChart/barChartIndex");
+     return res.render("barChartIndex");
   })
 
 app.listen(PORT, () => {
