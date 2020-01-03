@@ -1,0 +1,57 @@
+#header {
+  height: 30vh;
+  background-color: #9bb6e0;
+  position: relative;
+}
+
+#header img{
+  height: 100%;
+  width: 100%;
+}
+
+#header #nameTitle{
+ font-family: 'Kulim Park', sans-serif;
+ position: absolute;
+ top: 5%;
+ padding-left: 43%;
+}
+
+#header #linksDiv{
+  font-family: 'Kulim Park', sans-serif;
+  display: inline-block;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+}
+
+
+#header a {
+  opacity:0.7;
+  background-color: gray;
+  display: inline-block;
+  color: white;
+  padding-left: 45px;
+  padding-right: 45px;
+  margin-bottom: 0px;
+  text-decoration: none;
+}
+
+#header a:hover {
+  background-color: #4bc4d6;
+  opacity: 1;
+}
+
+#slideshow {
+  position: relative;
+  display: inline-block;
+  width: 40%;
+  height: 100%;
+}
+
+#slideshow > div {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
