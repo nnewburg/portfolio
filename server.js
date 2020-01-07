@@ -14,7 +14,8 @@ const path = require('path');
 app.set("view engine", "ejs");
 
 app.set('views', [path.join(__dirname, 'views'),
-                      path.join(__dirname, 'views/barChart/')]);
+                      path.join(__dirname, 'views/barChart/'),
+                      path.join(__dirname, 'views/battleship/')]);
 
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -32,6 +33,10 @@ app.get("/projects", (req, res) => {
 
 app.get("/barChart", (req, res) => {
      return res.render("barChartIndex");
+  })
+
+app.get("/battleship", (req, res) => {
+     return res.render("battleshipIndex");
   })
 
 app.listen(PORT, () => {
