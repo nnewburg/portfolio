@@ -19,7 +19,10 @@ $(function() {
     }
 
      $('body').on('click', '#startGame', function(){
+console.log("test")
+
         if($('#startGame').html() == "AI Turn" && diffi == "Easy"){
+          console.log("test")
         let guessNum = Math.floor(Math.random() * 100)
         while(guessTotal.includes(guessNum)){
           guessNum = Math.floor(Math.random() * 100);
@@ -28,9 +31,11 @@ $(function() {
         let guess = '#tokenPly' + guessNum;
 
         if($(guess).hasClass("occupiedShip")){
+          console.log("test")
           $(guess).css("backgroundColor", "red")
         } else {
           $(guess).css("backgroundColor", "green");
+          console.log("test")
         }
      } else if($('#startGame').html() == "AI Turn" && diffi == "Hard"){
 
