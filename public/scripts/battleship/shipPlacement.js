@@ -4,7 +4,7 @@ let shipsLeft = 5;
 
   $('body').on('click', '.ship', function(){
       if(shipClicked == false){
-        $(this).css('backgroundColor', 'red');
+        $(this).css('backgroundColor', 'yellow');
         $(this).attr('id', 'selected');
         shipClicked = true;
       } else if(shipClicked == true){

@@ -1,5 +1,7 @@
 $(function() {
 
+
+
   let guessTotal = [];
   const diffi = $('#aiDifficulty').val();
   const hardModeHits = [];

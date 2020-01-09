@@ -2,10 +2,18 @@
 <html>
 <head>
    <link rel="stylesheet" type="text/css" href="/styles/battleship/style.css">
+<script>
+function myFunction() {
+  alert("Click on a ship, once highlighted place it on your board");
+}
+</script>
+
 
   <title>A game of BattleShip</title>
 </head>
 <body>
+
+
   <div id="shipsToPlace">
     <div class="ship">Carrier<img width="50%" height="50%" src="./images/battleship/aircraftCarrier.png"></div>
     <div class="ship">Battleship<img width="50%" height="50%" src="./images/battleship/battleShip.jpg"></div>
@@ -13,6 +21,7 @@
     <div class="ship">Submarine<img width="50%" height="50%" src="./images/battleship/submarine.png"></div>
     <div class="ship">Destroyer<img width="50%" height="50%" src="./images/battleship/destroyer.png"></div>
   </div>
+
   <div id="placementChoice">
     <p>Ship Positioning</p>
     <select id ='shipDirection' name="shipDirection">
@@ -96,7 +105,9 @@
     <div class="XAxis">J</div>
   </div>
 
-
+<script type="text/javascript">
+alert("Click on a ship, once it is highlighted click a tile on your board, once done the game starts");
+</script>
 
 </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
