@@ -3,10 +3,10 @@ $(function() {
 
 
   let guessTotal = [];
-  const diffi = $('#aiDifficulty').val();
+  // const diffi = $('#aiDifficulty').val();
   const hardModeHits = [];
-  // let playerBoard = generate2DArr();
-  console.log(diffi)
+  let playerBoard = generate2DArr();
+  // console.log(diffi)
 
     for(let i = 0; i < 100; i++){
       let tile = $("<div></div>");
@@ -24,16 +24,18 @@ $(function() {
 
      $('body').on('click', '#startGame', function(){
 
-        console.log($('#startGame').html(), diffi)
+        const diffi = $('#aiDifficulty').val();
+        console.log("difficulty chosen " + diffi)
 
         if($('#startGame').html() == "AI Turn - click for AI to take a shot" && diffi == "Easy"){
+          console.log("Easy mode fired");
           let guessNum = Math.floor(Math.random() * 100)
           while(guessTotal.includes(guessNum)){
             guessNum = Math.floor(Math.random() * 100);
           }
           guessTotal.push(guessNum);
           let guess = '#tokenPly' + guessNum;
-          console.log(guess)
+
 
           if($(guess).hasClass("occupiedShip")){
 
@@ -42,20 +44,29 @@ $(function() {
 
             $(guess).css("backgroundColor", "green");
           }
-     } else if($('#startGame').html() == "AI Turn-click for AI to take a shot" && diffi == "Hard"){
+     } else if($('#startGame').html() == "AI Turn - click for AI to take a shot" && diffi == "Hard"){
 
-       //  let guess = bestAttacks(playerBoard, hardModeHits);
-       //  if($(guess).hasClass("occupiedShip")){
-       //    $(guess).css("backgroundColor", "red")
-       //    guess = guess.replace(/[A-Za-z]/g, "");
-       //    guess = Number(guess);
-       //    let firstCoordinate = Math.floor(guess/10)
-       //    let SecondCoordinate = guess % 10;
-       //    hardModeHits.push([firstCoordinate, SecondCoordinate]);
-       //    playerBoard[firstCoordinate][SecondCoordinate] = 1;
-       //  } else {
-       //    $(guess).css("backgroundColor", "green");
-       //  }
+        let guess = bestAttacks(playerBoard, hardModeHits)
+        console.log(guess)
+        if($(guess).hasClass("occupiedShip")){
+          $(guess).css("backgroundColor", "red")
+          guess = guess.replace(/\D/g, "");
+          guess = Number(guess);
+          console.log(guess)
+          let firstCoordinate = Math.floor(guess/10)
+          let SecondCoordinate = guess % 10;
+          hardModeHits.push([firstCoordinate, SecondCoordinate]);
+          playerBoard[firstCoordinate][SecondCoordinate] = 1;
+          console.log(hardModeHits)
+        } else {
+          $(guess).css("backgroundColor", "green");
+          guess = guess.replace(/\D/g, "");
+          guess = Number(guess);
+          let firstCoordinate = Math.floor(guess/10)
+          let SecondCoordinate = guess % 10;
+          playerBoard[firstCoordinate][SecondCoordinate] = 2;
+
+        }
 
        }
 
@@ -68,14 +79,19 @@ function bestAttacks(data, hits){
   for(let i = 0; i < hits.length; i++){
    let row = hits[i][0];
    let col = hits[i][1];
+   console.log(data[row][col])
     if(data[row][col] == 1){
       if(data[row + 1][col] == 0){
+          console.log("Down a row");
           return '#tokenPly' + (row + 1) + col;
-      } else if(data[row][col + 1] == 0){
+      } if(data[row][col + 1] == 0){
+        console.log("Right a column");
            return '#tokenPly' + (row) + (col + 1);
-      }else if(data[row - 1][col] == 0){
+      } if(data[row - 1][col] == 0){
+        console.log("Up a row");
            return '#tokenPly' + (row - 1) + col;
       }else if(data[row][col -1] == 0){
+        console.log("Left a column");
            return '#tokenPly' + (row) + (col -1);
       }
     }
@@ -87,19 +103,19 @@ function bestAttacks(data, hits){
       return '#tokenPly' + guessNum;
 }
 
-// function generate2DArr{
-//     let plyBoard = []
-//     for(let i = 0; i < 10; i++){
-//     plyBoard[i] = [];
-//     for(let k = 0; k < 10; k++){
-//       plyBoard[i][k] = 0;
-//     }
-//    }
-//    return plyBoard
-//   }
-
-
 });
+
+function generate2DArr (){
+    let plyBoard = []
+    for(let i = 0; i < 10; i++){
+    plyBoard[i] = [];
+    for(let k = 0; k < 10; k++){
+      plyBoard[i][k] = 0;
+    }
+   }
+   console.log(plyBoard)
+   return plyBoard
+  }
 
 
 /*data parameter in the bestAttacks function needs to be a 2 dimensional array that creates the computers visulization of the player's board, hits is an array of 2 number arrays that adds when it makes a hit */

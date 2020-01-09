@@ -34,7 +34,6 @@ $('body').on('click', '#startGame', function(){
     $('body').on('click', '.boardTileOpp', function(){
       if($('#startGame').html() == "Player's turn - click an Opponent's tile"){
       let target = $(this).attr('id');
-      console.log(oppBoard[0][1])
       target = target.replace(/[A-Za-z]/g, '');
       target = Number(target)
       let firstDigit = Math.floor(target/10)
