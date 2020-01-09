@@ -1,28 +1,31 @@
 body{
-  background-color: #A8C6C5;
-
+  background: url(../../images/battleship/background.jpg);
+   background-size: cover;
 }
+
+
 
 #difficultyChoice{
   position: absolute;
   top: 350px;
-  left: 25px;
   background-color: white;
-  border: 5px black solid;
+  border: 2px dashed gold;
 }
 
 #startGame{
   position: absolute;
+  border: 2px dashed gold;
   top: 50px;
+  padding: 20px;
   left: 50px;
   height: 100px;
   width: 100px;
-  background-color: red;
+  background-color: white;
 }
 
 #shipsToPlace{
   background-color: white;
-  border: 4px black solid;
+  border: 2px dashed gold;
   padding: 5px;
   width: 160px;
   height: 160px;
@@ -36,9 +39,8 @@ body{
 #placementChoice{
   position: absolute;
   top: 200px;
-  left: 25px;
   background-color: white;
-  border: 5px black solid;
+  border: 2px dashed gold;
   padding: 20px;
 }
 
@@ -61,7 +63,7 @@ body{
   grid-template-rows: repeat(10, 1fr);
   width: 350px;
   height: 325px;
-  background-color: #138A88;
+  background-color: #133E8A;
   position: absolute;
   left: 800px;
   top: 150px;
@@ -76,20 +78,35 @@ body{
   border: 1px black solid;
 }
 
+.insigImg{
+  position: absolute;
+  top: 25px;
+  left: 385px;
+  width: 225px;
 
+}
+
+.insigImg2{
+  position: absolute;
+  top: 25px;
+  left: 875px;
+  width: 225px;
+}
 
 #OppTitle{
   position: absolute;
-  background-color: red;
+  border: 2px dashed gold;
+  background-color: #6caaad;
   top: 75px;
   left: 375px;
 }
 
 #PlyTitle{
   position: absolute;
-  background-color: red;
+  border: 2px dashed gold;
+  background-color: #6caaad;
   top: 75px;
-  left: 875px;
+  left: 900px;
 }
 
 #yAxisOpp{

@@ -30,9 +30,9 @@ $('body').on('click', '#startGame', function(){
   placeShip(3);
   placeShip(2);
 
-  $('#startGame').html("Player's turn");
+  $('#startGame').html("Player's turn - click an Opponent's tile");
     $('body').on('click', '.boardTileOpp', function(){
-      if($('#startGame').html() == "Player's turn"){
+      if($('#startGame').html() == "Player's turn - click an Opponent's tile"){
       let target = $(this).attr('id');
       console.log(oppBoard[0][1])
       target = target.replace(/[A-Za-z]/g, '');
@@ -42,9 +42,9 @@ $('body').on('click', '#startGame', function(){
         if(oppBoard[firstDigit][secondDigit] == 1){
           $(this).css('backgroundColor', 'red')
         } else {
-          $(this).css('backgroundColor', 'grey')
+          $(this).css('backgroundColor', 'green')
         }
-      $('#startGame').html("AI Turn");
+      $('#startGame').html("AI Turn - click for AI to take a shot");
       }
     });
   });

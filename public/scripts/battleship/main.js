@@ -1,8 +1,10 @@
 $(function() {
+
   let guessTotal = [];
   const diffi = $('#aiDifficulty').val();
   const hardModeHits = [];
   // let playerBoard = generate2DArr();
+  console.log(diffi)
 
     for(let i = 0; i < 100; i++){
       let tile = $("<div></div>");
@@ -19,25 +21,26 @@ $(function() {
     }
 
      $('body').on('click', '#startGame', function(){
-console.log("test")
 
-        if($('#startGame').html() == "AI Turn" && diffi == "Easy"){
-          console.log("test")
-        let guessNum = Math.floor(Math.random() * 100)
-        while(guessTotal.includes(guessNum)){
-          guessNum = Math.floor(Math.random() * 100);
-        }
-        guessTotal.push(guessNum);
-        let guess = '#tokenPly' + guessNum;
+        console.log($('#startGame').html(), diffi)
 
-        if($(guess).hasClass("occupiedShip")){
-          console.log("test")
-          $(guess).css("backgroundColor", "red")
-        } else {
-          $(guess).css("backgroundColor", "green");
-          console.log("test")
-        }
-     } else if($('#startGame').html() == "AI Turn" && diffi == "Hard"){
+        if($('#startGame').html() == "AI Turn - click for AI to take a shot" && diffi == "Easy"){
+          let guessNum = Math.floor(Math.random() * 100)
+          while(guessTotal.includes(guessNum)){
+            guessNum = Math.floor(Math.random() * 100);
+          }
+          guessTotal.push(guessNum);
+          let guess = '#tokenPly' + guessNum;
+          console.log(guess)
+
+          if($(guess).hasClass("occupiedShip")){
+
+            $(guess).css("backgroundColor", "red")
+          } else {
+
+            $(guess).css("backgroundColor", "green");
+          }
+     } else if($('#startGame').html() == "AI Turn-click for AI to take a shot" && diffi == "Hard"){
 
        //  let guess = bestAttacks(playerBoard, hardModeHits);
        //  if($(guess).hasClass("occupiedShip")){
@@ -54,7 +57,7 @@ console.log("test")
 
        }
 
-     $('#startGame').html("Player's turn")
+     $('#startGame').html("Player's turn - click an Opponent's tile")
 
       });
 

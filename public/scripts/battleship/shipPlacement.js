@@ -66,6 +66,7 @@ let shipsLeft = 5;
       if(shipsLeft === 0){
         $("#shipsToPlace").remove()
         $("#placementChoice").remove()
+        $("#difficultyChoice").remove()
         let chart = $("<div>Click to Start Game</div>")
         $(chart).attr("id", "startGame");
         $('body').append(chart);
@@ -118,6 +119,7 @@ let shipsLeft = 5;
       if(shipsLeft === 0){
         $("#shipsToPlace").remove()
         $("#placementChoice").remove()
+        $("#difficultyChoice").remove()
         let chart = $("<div>Click to Start Game</div>")
         $(chart).attr("id", "startGame");
         $('body').prepend(chart);
