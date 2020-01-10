@@ -1,28 +1,18 @@
 #projectsCont{
   margin: 5% 10% 10% 10%;
   border: 3px black solid;
-
+  display: flex;
+  flex-direction: row;
 
 }
 
 .card{
-
-  display: inline-block;
+/*  display: inline-block;*/
 }
 
-/*.project{
-  border: 3px black solid;
-  margin: 10px;
-  width: 30%
-}
 
-.project img {
+.card img {
   height: 200px;
-  width: 300px;
+  width: 18rem;
 }
 
-.project h4{
-  padding: 5% 0 0 5%;
-}
-
-*/
