@@ -1,12 +1,8 @@
 $(function() {
 
-
-
   let guessTotal = [];
-  // const diffi = $('#aiDifficulty').val();
   const hardModeHits = [];
   let playerBoard = generate2DArr();
-  // console.log(diffi)
 
     for(let i = 0; i < 100; i++){
       let tile = $("<div></div>");
