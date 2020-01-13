@@ -1,0 +1,20 @@
+body{
+  background-color: #C3C7C7;
+}
+
+#resumeCVSwitch{
+  display: inline-block;
+  margin-left: 1em;
+  margin-top: 2%;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+}
+
+
+#resumeContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 2%;
+}
+

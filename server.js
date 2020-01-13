@@ -27,6 +27,10 @@ app.get("/", (req, res) => {
      return res.render("index");
   })
 
+app.get("/resume", (req, res) => {
+     return res.render("resume");
+  })
+
 app.get("/projects", (req, res) => {
      return res.render("projects");
   })
