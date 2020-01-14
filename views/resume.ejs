@@ -7,6 +7,8 @@
   <link rel="stylesheet" type="text/css" href='/styles/resume.css'>
  <link href="https://fonts.googleapis.com/css?family=Kulim+Park&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/scripts/slideshow.js"></script>
+<script type="text/javascript" src="/scripts/swapResCV.js"></script>
 
 </head>
 <body>
@@ -15,14 +17,16 @@
   <% include ./partials/_header.ejs %>
 
   <div id="resumeCVSwitch">
-    <button>Resume</button>
-    <button>Cover Letter</button>
+    <button id="switchRes">Resume</button>
+    <button id="switchCV">Cover Letter</button>
   </div>
 
   <div id="resumeContainer">
-    <iframe src="https://resume.creddle.io/embed/3bnhlbpus64"
+    <iframe id="resume" src="https://resume.creddle.io/embed/3bnhlbpus64"
   width="850" height="1100" ></iframe>
     </iframe>
+
+    <iframe id="CV" src="Cover_Letter.html" width="850" height="700" style="background-color: white;"></iframe>
   </div>
 </div>
 
