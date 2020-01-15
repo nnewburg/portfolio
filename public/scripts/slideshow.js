@@ -2,7 +2,6 @@
 
 $("#slideshow > div:gt(0)").hide();
 
-console.log("coding hard")
 setInterval(function() {
   $('#slideshow > div:first')
     .fadeOut(1000)
