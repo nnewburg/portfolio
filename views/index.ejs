@@ -4,15 +4,56 @@
   <title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href='/styles/header.css'>
+  <link rel="stylesheet" type="text/css" href='/styles/index.css'>
  <link href="https://fonts.googleapis.com/css?family=Kulim+Park&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="/scripts/slideshow.js"></script>
+<script type="text/javascript" src="/scripts/swapBio.js"></script>
 </head>
 <body>
 
 <div id="main">
   <% include ./partials/_header.ejs %>
-  <p>Hello World</p>
+   <div id="bioSwitch">
+    <button class="btn btn-success" id="switchHist">My History</button>
+    <button class="btn btn-success" id="switchCoding">Coding Aptitiude</button>
+    <button class="btn btn-success" id="switchPersonality">Personal Traits</button>
+  </div>
+  <div id="bioContainer">
+    <div id="history">
+      <p>Throughout highschool I was always thinking about what career to venture down. I was inclined towards the sciences but none of the traditional sciences ignited my passion. Biology and Math did not have exciting practical applications in my young mind. I decided to wait for post secondary education once I had a better perspective of the real world. I moved out of my parents' home and began working in restaurants as a chef, living on my own at 19. The experiences gained were invaluable, hard physical work combined with the reality of what a dollar meant. Cooking taught me I enjoyed being challenged, to work hard and improve myself every day I went in to work.</p>
+
+      <p>After two years of physical labour, it was time to challenge myself mentally. I still did not have a clear idea of what I wanted to do for a career but I needed a change to spark an idea of what I would enjoy doing. I enrolled in college to take a business degree in accounting. It was the logical/analytical pillar of the business world and seemed like something I could do.</p>
+
+      <p>I completed two years of courses in accounting when I took introduction to programming as an elective. I had no coding experience before and immediately fell in love. It was a science I was never exposed to and exactly what I was looking for my whole life. Technology was always a passion of mine, how it shaped and changed the world year by year. Being young when the internet and cell phones became main stream I feel I was born at a junction of history that was a monumental shift. I had no connection or way to be a part of it, but writing my first hello world program opened that door forever.</p>
+
+      <p>I switched majors to Computer Science and have enjoyed every second of it, a year into courses I had family cirumstances that made me move back home with them to help out. Instead of continuing my studies I began self learning and eventually enrolled in a Web Development certification program with Lighthouse Labs. Since graduating I have been honing my skills and knowledge of web devlopment and take pride in looking back on difficult problems in Computer Science I once found impossible now being completely managable, even easy.</p>
+
+
+    </div>
+    <div id="codingApt">
+      <p>I have created a dozen full stack web applications, designing the front end with dynamic scripts, the server, and creating and maintaining a database for these applications. All of these applications have been built with RESTful Api in mind, with promise based server requests and responses. I have a strong grasp of the design patern of Model View Controller. I am at a stage of Web Devlopment where I am eager to learn more and more of the libraries and frameworks that all accomplish the same goal but do them different ways.</p>
+
+      <p>I have coded with Java/Javascript for 3 years, and in that time I have learnt many critical things to being a good coder. Firstly there are often a dozen ways to solving a problem, all of which can work but many are often faster or more efficient. Runtime and Big O notation were concepts covered briefly in my education but I never had hands on experience with it. I use coding practice sites that present users with challenges to solve, and the harder problems often use inputs with thousands or tens of thousands of inputs of data. Through that I am versed with runtime efficiency being a critical part of well designed code.</p>
+
+      <p>My favourite side of web devlopment has certainly been Database management, writing complicated queries to retrieve a specific set of Data is just pure fun for me. SQL is my preferred database communication method.</p>
+
+      <p>For 2 years I have practiced HTML, CSS, and Jquery coding. I am proud of my fluency with these tools, and have a strong grasp of the basics which allows me to approach and tackle any new problem I face by simply researching Stack Overflow/Google. Learning how to learn is a standard of education and I uphold that principle with deep understanding. I am good at identifying what needs to be done, and know how to communicate how to do it when researching a solution.</p>
+
+      <p>Demonstrating further the concept I just explained. I know how to learn and apply frameworks and libraries with ease. React, Bootstrap, Ajax, MySQL, Node, and several others. I notice many companies code in Java, C#, C++, or Python because of this I have begun to practice and understand the syntax of these languages. Taking it a step further things like PHP, .NET framework, and creating mobile applications with Android are also things I plan to began treading into.</p>
+
+      <p>For me it is a matter of identifying where and how I can continue to be challenged as a developer which is difficult without a job.</p>
+    </div>
+
+    <div id="personalityTra">
+      <p>Above all I am a logical person who loves being challenged. Whether it is liking board games that are competitive with a low variance of luck and a high skill ceiling, or enjoying sports and the analytical side of it. I am competitive by nature and coding has always enticed me when presented a difficult problem and working hard to figure it out. The greatest satisfaction I have had in life comes from solving a coding problem. A big part of selecting a career was always being challenged to improve everyday and never feeling stagnation.</p>
+
+      <p>I am a very good listener and believe it is a virtue that is often forgotten these days. No matter who you are interacting with they will often know something you don't, if you listen you will most definately learn something you had no idea you could. I am easy to get along with because I have a decent aptitude towards understanding everyone is different, and many things shape their behaviour. If you're driving along and someone does something unsafe or rude, they could just be having a very bad day, and they're a decent person. I am not quick to judge and think these two things go hand in hand when respecting and valuing other people.</p>
+
+      <p>I have learned to think outside the box when it comes to approaching a problem, often when you are stuck and trying different solutions that are more familiar or traditional ways you would solve a problem you're missing a key piece that you are not thinking of. It is difficult to convey this without some degree of vagueness, but I find often in coding you have a pre established pattern of problem solving using concepts or tools you're familiar with. It is important to take a step back and observe if there could be a better way.  This goes hand in hand with what I mentioned in the previous section, often any problem you encounter someone else has encountered it before and a little bit of research will offer a solution you did not even consider.</p>
+
+    </div>
+  </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

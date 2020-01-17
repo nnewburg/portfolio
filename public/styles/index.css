@@ -1,0 +1,19 @@
+body{
+  background-color: #C3C7C7;
+}
+
+#bioSwitch{
+  display: inline-block;
+  margin-left: 1em;
+  margin-top: 2%;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+}
+
+
+#bioContainer {
+  padding: 1rem;
+  margin: 5% 10% 10% 10%;
+  border: 3px black solid;
+  display: flex;
+  flex-direction: row;
+}

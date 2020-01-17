@@ -27,6 +27,11 @@ app.get("/", (req, res) => {
      return res.render("index");
   })
 
+app.get("/aboutme", (req, res) => {
+     return res.render("index");
+  })
+
+
 app.get("/resume", (req, res) => {
      return res.render("resume");
   })
