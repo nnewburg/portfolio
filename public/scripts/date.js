@@ -1,3 +1,5 @@
+//function to make the date of my cover letter dynamic and reflect the current date
+
  $(function( $ ){
 
 const monthNames = ["January", "February", "March", "April", "May", "June",

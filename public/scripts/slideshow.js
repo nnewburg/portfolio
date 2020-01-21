@@ -1,3 +1,5 @@
+//function to create the slideshow within the header of the website
+
  $(function( $ ){
 
 $("#slideshow > div:gt(0)").hide();

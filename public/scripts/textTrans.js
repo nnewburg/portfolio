@@ -1,6 +1,6 @@
+//attempt at making biography text transtion/animation in a cascading down format
+
   $(function( $ ){
-
-
 
     for(let n = 1; n <= 4; n++){
 

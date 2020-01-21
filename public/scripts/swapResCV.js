@@ -1,3 +1,5 @@
+//functionality to swap between CV and Resume
+
  $(function( $ ){
 
   $( "#CV" ).hide();

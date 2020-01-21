@@ -1,3 +1,5 @@
+//functionality to swap between the biography paragraphs, hiding one and showing the one associated with the button clicked
+
  $(function( $ ){
 
   $("#codingApt").hide();
