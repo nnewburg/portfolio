@@ -64,7 +64,7 @@ app.get("/battleship", (req, res) => {
 app.post("/tinyApp/urls", (req, res) => {
   let shortURL = generateRandomString();
 
-  knex("urls").insert({longurl: req.body.longURL,shorturl: shortURL, userid:req.session.user_id}).then(result => {
+  knex("tinyapp_urls").insert({longurl: req.body.longURL,shorturl: shortURL, userid:req.session.user_id}).then(result => {
     res.redirect('/tinyApp/urls/' + shortURL);
   })
 });
@@ -73,7 +73,7 @@ app.post("/tinyApp/urls", (req, res) => {
 //Disables someone from deleting links who is not the owner
 app.post("/tinyApp/urls/:shortURL/delete", (req,res) =>{
 
-  knex('urls').where({shorturl: req.params.shortURL }).del().then(result => {
+  knex('tinyapp_urls').where({shorturl: req.params.shortURL }).del().then(result => {
     res.redirect('/tinyApp/urls/');
   })
 });
@@ -82,7 +82,7 @@ app.post("/tinyApp/urls/:shortURL/delete", (req,res) =>{
 //if not redirects them back to the index
 app.post("/tinyApp/urls/:id", (req,res) =>{
 
-  knex("urls").where({shorturl: req.params.id}).update({longurl: req.body.updatedURL}).then(result => {
+  knex("tinyapp_urls").where({shorturl: req.params.id}).update({longurl: req.body.updatedURL}).then(result => {
     res.redirect('/tinyApp/urls/');
   })
 });
@@ -93,11 +93,11 @@ app.post("/tinyApp/login", (req,res) =>{
   let loginEmail = req.body.email;
   let loginPassword = req.body.password;
 
-knex("users").where({email: req.body.email}).then(result => {
+knex("tinyapp_users").where({email: req.body.email}).then(result => {
 
     if(result.length){
       if(bcrypt.compareSync(loginPassword, result[0].password)){
-        req.session.user_id = result[0].id;
+        req.session.user_id = result[0].cookieid;
         return res.redirect("tinyApp/urls/");
       } else {
           return res.status(403).send("<h1>Status Code: 403<h1>Wrong Password</h1>");
@@ -127,14 +127,14 @@ app.post("/tinyApp/register", (req, res) =>{
     return res.status(400).send("<h1>Status Code: 403<h1>Cannot register with an empty email or password</h1>");
   }
 
- knex('users').where({email: req.body.email}).then(result =>{
+ knex('tinyapp_users').where({email: req.body.email}).then(result =>{
 
   let makeAccnt = result.length
   if(result.length){
       return res.status(400).send("<h1>Status Code: 403<h1>E-mail is already taken</h1>");
   }
   else{
-        knex('users').insert({id:randomID, email: req.body.email, password: bcrypt.hashSync(ogPassword, 10)}).then(result =>{
+        knex('tinyapp_users').insert({cookieid:randomID, email: req.body.email, password: bcrypt.hashSync(ogPassword, 10)}).then(result =>{
           req.session.user_id = randomID;
           res.redirect('urls/');
         })
@@ -166,10 +166,10 @@ app.get("/tinyApp", (req, res) => {
 app.get("/tinyApp/urls", (req, res) => {
 
 if(req.session.user_id){
-  knex("users").where({id: req.session.user_id}).then(result => {
-    let userID = result[0].id
+  knex("tinyapp_users").where({cookieid: req.session.user_id}).then(result => {
+    let userID = result[0].cookieid
     let email = result[0].email
-    knex("urls").where({userid: userID}).then(result => {
+    knex("tinyapp_urls").where({userid: userID}).then(result => {
       let filteredDB = {}
       for(let short of result){
         filteredDB[short.shorturl] = short.longurl
@@ -188,10 +188,10 @@ if(req.session.user_id){
 //otherwise redirects to login menu
 app.get("/tinyApp/urls/new", (req, res) => {
 
-  knex("users").where({id: req.session.user_id}).then(result => {
-    let userID = result[0].id
+  knex("tinyapp_users").where({cookieid: req.session.user_id}).then(result => {
+    let userID = result[0].cookieid
     let email = result[0].email
-    knex("urls").where({userid: userID}).then(result => {
+    knex("tinyapp_urls").where({userid: userID}).then(result => {
       let filteredDB = {}
       for(let short of result){
         filteredDB[short.shorturl] = short.longurl
@@ -209,7 +209,7 @@ app.get("/tinyApp/urls/new", (req, res) => {
 
 //route to show a specific tiny URLS page
 app.get("/tinyApp/urls/:shortURL", (req, res) => {
-  knex("urls").where({shorturl: req.params.shortURL}).then(result => {
+  knex("tinyapp_urls").where({shorturl: req.params.shortURL}).then(result => {
     let templateVars = {user: result[0].userid, shortURL: result[0].shorturl, longURL: result[0].longurl };
     res.render("urls_show", templateVars);
   })
@@ -218,7 +218,7 @@ app.get("/tinyApp/urls/:shortURL", (req, res) => {
 //get route that redirects the user to the Long URL
 app.get("/tinyApp/u/:shortURL", (req, res) => {
 let templateVars = {user: users[req.session.user_id], urls: urlDatabase };
-  knex("urls").where({shorturl: req.params.shortURL}).then(result => {
+  knex("tinyapp_urls").where({shorturl: req.params.shortURL}).then(result => {
     if(result[0]){
       res.redirect(result[0].longurl);
   } else {
