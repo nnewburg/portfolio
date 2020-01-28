@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ <link rel="stylesheet" type="text/css" href="/styles/pizzaShack/index.css">
+ <link href="https://fonts.googleapis.com/css?family=Mansalva&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Fascinate&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/scripts/pizzaShack/displayOrders.js"></script>
+  <script type="text/javascript" src="/scripts/pizzaShack/addToOrder.js"></script>
+  <script type="text/javascript" src="/scripts/pizzaShack/adjustQuantity.js"></script>
+  <script type="text/javascript" src="/scripts/pizzaShack/deleteOrder.js"></script>
+
+</head>
+<body>
+
+  <div id="nav">
+    <p id="language">English</p>
+    <p id="logo">Pizza Shack <img style="margin-bottom: 2rem;"width="60" height="60" src="https://cdn0.iconfinder.com/data/icons/restaurant-53/64/Food-junk-pizza-fast_food-512.png"/></p>
+      <% include ./partials/_header.ejs %>
+    <!-- <a id="login" href="/login">Sign In</a> -->
+  </div>
+
+
+ <div id="main">
+  <div class="card" >
+    <img class="card-img-top" src="https://vmcdn.ca/f/files/tbnewswatch/images/business/business-directory-photos/pizza-hut-thunder-bay/pizza-hut-pan-pizza.jpg;w=630" alt="Card image cap">
+   <div class="card-body">
+      <h4 class="card-title">Pepperoni Pizza</h4>
+      <p class="card-text">Pepperoni Pizza the classic of classics, mmmmm</p>
+      <a href="#" id="Pepperoni" class="btn btn-primary addItem">Order</a>
+    </div>
+  </div>
+  <div class="card" >
+    <img class="card-img-top" src="https://cdn.shopify.com/s/files/1/1718/7795/articles/Pizza_-_Veggie_Supreme_1024x512_crop_center.jpg?v=1529420457;w=630" alt="Card image cap">
+    <div class="card-body">
+      <h4 class="card-title">Vegetarian Pizza</h4>
+      <p class="card-text">Topped with mushrooms, peppers, olives, and spinach</p>
+      <a href="#" id="Vegetarian" class="btn btn-primary addItem">Order</a>
+    </div>
+  </div>
+  <div class="card" >
+    <img class="card-img-top" src="https://assets.epicurious.com/photos/5761c748ff66dde1456dfec0/2:1/w_1260%2Ch_630/crispy-baked-chicken-wings.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h4 class="card-title">Wings</h4>
+      <p class="card-text">Choose between honey garlic, hot, or salt and pepper</p>
+      <a href="#" id="Wings" class="btn btn-primary addItem">Order</a>
+    </div>
+  </div>
+   <div class="card" >
+    <img class="card-img-top" src="https://hips.hearstapps.com/del.h-cdn.co/assets/15/45/1446653066-delish-thanksgiving-breadstick-toppings.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h4 class="card-title">Bread Sticks</h4>
+      <p class="card-text">Choose between cheesy, extra cheesy, or ridiculously cheesy</p>
+      <a href="#" id="Bread" class="btn btn-primary addItem">Order</a>
+    </div>
+  </div>
+
+
+
+</div>
+
+<div id="myOrder">
+  Your Order:
+<div id="cartItems">
+  </div>
+
+  <div id="totalCost">
+    Total Cost:
+  </div>
+
+<div>
+  <button id="checkOut" style="margin:10px;" type="submit" class="btn btn-info" onclick="window.location.href = 'pizzashack/checkOut'">Check Out</button>
+</div>
+
+</div>
+
+<div id="botNav">
+  <div>
+    <ul id="botNavList">
+      <li> Email Offers </li>
+      <li>|</li>
+      <li> Gift Cards</li>
+      <li>|</li>
+      <li> Catering</li>
+      <li>|</li>
+      <li> Join Our Team</li>
+      <li>|</li>
+      <li> Privacy</li>
+      <li>|</li>
+      <li> Terms of Use</li>
+    </ul>
+  </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

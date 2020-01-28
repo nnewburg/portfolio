@@ -18,7 +18,8 @@ app.set("view engine", "ejs");
 app.set('views', [path.join(__dirname, 'views'),
                       path.join(__dirname, 'views/barChart/'),
                       path.join(__dirname, 'views/battleship/'),
-                      path.join(__dirname, 'views/tinyApp/')]);
+                      path.join(__dirname, 'views/tinyApp/'),
+                      path.join(__dirname, 'views/pizzaShack/')]);
 
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -29,6 +30,7 @@ app.use(cookieSession({
   keys: ['key1', 'key2'],
   maxAge: 24 * 60 * 60 * 1000
 }));
+
 
 
 
@@ -55,6 +57,170 @@ app.get("/barChart", (req, res) => {
 app.get("/battleship", (req, res) => {
      return res.render("battleshipIndex");
   })
+
+// Seperated Routes for each Order
+const orderRoutes = require("./routes/orders");
+const itemRoutes = require("./routes/items");
+const allOrderRoutes = require("./routes/allOrders")
+
+// Mount all order routes
+app.use("/api/orders", orderRoutes(knex));
+
+// Mount all order routes
+app.use("/api/items", itemRoutes(knex));
+
+app.use("/api/allOrders", allOrderRoutes(knex));
+
+
+
+app.get("/pizzashack", (req, res) => {
+
+    if(req.session.user){
+
+      if (req.session.user.admin){
+        res.redirect("/pizzashack/admin")
+     }
+    }
+      // if(req.session.user){
+      //    res.redirect("/admin")
+      // }
+
+      let templateVars = {user: req.session.user};
+      if(req.session.user){
+        return res.render("pizzashack_index", templateVars);
+      } else {
+         return res.render("pizzashack_index", templateVars)
+      }
+  })
+
+app.get("/pizzashack/login", (req, res) => {
+   if(req.session.user){
+    if ("admin" in req.session.user){
+      res.redirect("/pizzashack_admin")
+    }
+  }
+
+  // let templateVars = {user: req.session.user};
+  res.render("pizzashack_login")
+})
+
+app.get("/pizzashack/checkOut", (req, res) => {
+   if(req.session.user.admin == true){
+     res.redirect("/pizzashack/admin")
+   }
+
+  let templateVars = {user: req.session.user};
+  res.render("pizzashack_checkOut", templateVars)
+})
+
+app.get("/pizzashack/admin", (req, res) => {
+  let templateVars = {user: req.session.user}
+  res.render("pizzashack_admin", templateVars)
+})
+
+app.post("/pizzashack/login", (req, res) => {
+
+  // if(req.body.email === "" || req.body.password === "" || req.body.name === "" || req.body.phone === ""){
+  //   return res.status(400).send("<h1>Status Code: 403<h1> Cannot register with an empty email or password</h1>");
+  // }
+
+  let cryptedPword = bcrypt.hashSync(req.body.password, 10)
+
+  if(req.body.adminPword == "PizzaShack"){
+    knex("pizzashack_users").insert({email: req.body.email, password: cryptedPword, name: req.body.name, admin:true}).then(result => {
+    knex("pizzashack_users").where({email: req.body.email}).then(result => {
+    req.session.user = result[0]
+
+    res.redirect("/pizzashack/admin")
+   })
+  })
+  }
+  else{
+    knex("pizzashack_users").insert({email: req.body.email, password: cryptedPword, name: req.body.name, phone: req.body.phone, admin:false}).then(result => {
+     knex("pizzashack_users").where({email: req.body.email}).then(result => {
+      req.session.user = result[0]
+
+      res.redirect("/pizzashack")
+     })
+    })
+  }
+})
+
+app.post("/pizzashack/logout", (req, res) => {
+  knex("pizzashack_orders").where({user_id: req.session.user.id, currentOrder: true}).update({currentOrder: false}).then(result =>{
+    req.session.user = null
+    console.log(req.session.user)
+    res.redirect("/pizzashack")
+  })
+})
+
+app.post("/pizzashack/addItem", (req, res) => {
+  console.log("added ---" + req.body.id)
+  knex("pizzashack_orders").where({user_id: req.session.user.id, currentOrder: true}).then(result =>{
+    if(!result[0]){
+      knex("pizzashack_orders").insert({user_id: req.session.user.id, currentOrder: true, orderCompleted: false}).then(result => {
+        knex("pizzashack_orders").where({currentOrder:true}).update({itemsOrdered:req.body.id}).then(result => {
+          res.redirect("/pizzashack")
+        })
+      })
+    }
+    else {
+      knex.select('itemsOrdered').from("pizzashack_orders").where({currentOrder: true}).then(result => {
+        if(result[0].itemsOrdered){
+          knex("pizzashack_orders").where({currentOrder:true}).update({itemsOrdered:result[0].itemsOrdered + ',' + req.body.id}).then(result => {
+            res.redirect("/pizzashack")
+          })
+        }
+        else{
+          knex("pizzashack_orders").where({currentOrder:true}).update({itemsOrdered:req.body.id}).then(result => {
+            res.redirect("/pizzashack")
+          })
+        }
+      })
+      }
+  })
+})
+
+app.post("/pizzashack/decrementItem", (req,res) => {
+console.log("removed ---" + req.body.id)
+  let str = req.body.id + ","
+    knex("pizzashack_orders").where({user_id: req.session.user.id, currentOrder: true}).then(result =>{
+      knex("pizzashack_orders").where({currentOrder:true}).update({itemsOrdered:result[0].itemsOrdered.replace(str, "")}).then(result => {
+        res.redirect("/pizzashack")
+      })
+    })
+})
+
+app.post("/pizzashack/removeItem", (req, res) => {
+   knex("pizzashack_orders").where({user_id: req.session.user.id, currentOrder: true}).then(result => {
+      let parse = req.body.id.slice(6, req.body.id.length)
+      knex("pizzashack_orders").where({user_id: req.session.user.id, currentOrder: true}).then(result => {
+        let matrix = result[0].itemsOrdered.split(',')
+        let removed = matrix.filter(word => word !== parse)
+        removed = removed.join(",")
+        knex("pizzashack_orders").where({currentOrder:true}).update({itemsOrdered:removed}).then(result => {
+      })
+    })
+    })
+      res.redirect("/pizzashack")
+})
+
+app.post("/pizzashack/confirmOrder", (req, res) => {
+
+  let today = new Date();
+  let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  knex("pizzashack_orders").where({user_id: req.session.user.id, currentOrder: true}).update({Phone: req.session.user.phone, totalCost: req.body.totCost, currentOrder: false, orderCompleted:true, Date: date }).then(result =>{
+    // twilioClient.messages.create({
+    //   to: '+1' + req.session.user.phone,
+    //   from: '+12563673421',
+    //   body: 'Your order from PizzaShack has been placed'
+    // }).then(result => {
+      res.redirect("/pizzashack")
+    // })
+  })
+})
+
+
 
 
 //Route to the urls index,
