@@ -7,16 +7,20 @@ body{
   border: 3px black solid;
   display: flex;
   flex-direction: row;
+  background-color: #9494b8;
 
 }
 
 .card{
 /*  display: inline-block;*/
+margin: 3%;
+
 }
 
 
 .card img {
   height: 200px;
-  width: 18rem;
+  width: 100%;
+  border: 1px solid gray;
 }
 
