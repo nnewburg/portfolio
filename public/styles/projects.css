@@ -6,14 +6,15 @@ body{
   margin: 5% 10% 10% 10%;
   border: 3px black solid;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   background-color: #9494b8;
+ justify-content: space-around;
 
 }
 
 .card{
 /*  display: inline-block;*/
-margin: 3%;
+margin: 2%;
 
 }
 

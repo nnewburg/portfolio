@@ -9,6 +9,7 @@
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="/scripts/slideshow.js"></script>
+<script type="text/javascript" src="/scripts/enlargeImg.js"></script>
 </head>
 <body>
 
@@ -18,10 +19,10 @@
   <div id="projectsCont">
 
     <div class="card" style="width: 18rem;">
-      <img src="/images/me.jpg" class="card-img-top" alt="...">
+      <img src="/images/barChart.png" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Bar Chart</h5>
-          <p class="card-text">An application to create a barchart allowing a user to input values and graphically represent them</p>
+          <p class="card-text">An application to create a barchart allowing a user to input values and graphically represent them, my first project ever</p>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">HTML, CSS, Jquery</li>
@@ -31,7 +32,7 @@
     </div>
 
     <div class="card" style="width: 18rem;">
-      <img src="/images/battleShip.png" class="card-img-top" alt="...">
+      <img src="/images/BattleShipFin.png" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Battle Ship</h5>
           <p class="card-text">An application to play the boardgame Battleship</p>
@@ -50,11 +51,35 @@
           <p class="card-text">An application to create shortened URLS</p>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">HTML, CSS, Jquery</li>
+          <li class="list-group-item">HTML, CSS, Jquery, Knex, Postgres, Bcrypt</li>
           <li class="list-group-item"><a href="/tinyApp" class="card-link">Demo Application</a>
           <li class="list-group-item"><a href="#" class="card-link">Github Documentation</a></li>
         </ul>
     </div>
+
+    <div class="card" style="width: 18rem;">
+      <img src="/images/pizzaShack1.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Pizza Shack</h5>
+          <p class="card-text">Emulates a food ordering website</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">HTML, CSS, Jquery, HTML, CSS, Jquery, Knex, Postgres, Bcrypt, Bootstrap</li>
+          <li class="list-group-item"><a href="/pizzashack" class="card-link">Demo Application</a>
+          <li class="list-group-item"><a href="#" class="card-link">Github Documentation</a></li>
+        </ul>
+    </div>
+
+    <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 840px; height: 500px;" >
+      </div>
+    </div>
+  </div>
+</div>
 
   </div>
 </div>

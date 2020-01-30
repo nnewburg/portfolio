@@ -3,7 +3,7 @@
  $(function( $ ){
 
 $(document).on("click", '.addItem', function (e) {
-    console.log("riddly")
+
 
     $.ajax({
         type: "POST",
@@ -63,15 +63,11 @@ $(document).on("click", '.addItem', function (e) {
     });
 
 
-
-
-
-
 });
 })
 
  function addItem(resource,price){
-    console.log("value attribute increments")
+
     let value = parseInt($(`#${resource}Cart`).val())
     $(`#${resource}Cart`).val(parseInt(value+1))
     let amount = value + 1
