@@ -1,10 +1,10 @@
  $(function( $ ){
-  console.log("HIIIIIIIIII" )
+
   $.ajax({
     method: "GET",
-    url: "/api/users"
+    url: "/api/resources"
   }).done((resources) => {
-    console.log("HIIIIIIIIII" + resources)
+
     for(resource of resources) {
       renderPosts(createPost(resource))
     }
@@ -72,7 +72,6 @@
 
         resource.allcomments.forEach(function(comments){
         uniqueComment = ($('<div>').text(comments))
-        console.log(comments)
         $commentsContainer.append(uniqueComment);
       })
 

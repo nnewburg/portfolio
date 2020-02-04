@@ -1,15 +1,15 @@
 exports.seed = function(knex) {
-    return knex('resourceWall_keywords').del()
+    return knex('resourcewall_keywords').del()
       .then(function () {
         return Promise.all([
-          knex('resourceWall_keywords').insert({name: ' Food'}),
-          knex('resourceWall_keywords').insert({name: ' Dogs'}),
-          knex('resourceWall_keywords').insert({name: ' Animals'}),
-          knex('resourceWall_keywords').insert({name: ' Travel'}),
-          knex('resourceWall_keywords').insert({name: ' Magic'}),
-          knex('resourceWall_keywords').insert({name: ' Social Media'}),
-          knex('resourceWall_keywords').insert({name: ' Presents'}),
-          knex('resourceWall_keywords').insert({name: ' Shopping'}),
+          knex('resourcewall_keywords').insert({name: ' Food'}),
+          knex('resourcewall_keywords').insert({name: ' Dogs'}),
+          knex('resourcewall_keywords').insert({name: ' Animals'}),
+          knex('resourcewall_keywords').insert({name: ' Travel'}),
+          knex('resourcewall_keywords').insert({name: ' Magic'}),
+          knex('resourcewall_keywords').insert({name: ' Social Media'}),
+          knex('resourcewall_keywords').insert({name: ' Presents'}),
+          knex('resourcewall_keywords').insert({name: ' Shopping'}),
         ]);
       });
   }

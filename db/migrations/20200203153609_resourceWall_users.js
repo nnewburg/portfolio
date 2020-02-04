@@ -1,5 +1,5 @@
 exports.up = function(knex) {
-  return knex.schema.createTable('resourceWall_users', function (table) {
+  return knex.schema.createTable('resourcewall_users', function (table) {
     table.increments('id');
     table.string('name');
     table.string('email');
@@ -9,5 +9,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTable('resourceWall_users');
+  return knex.schema.dropTable('resourcewall_users');
 };

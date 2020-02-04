@@ -32,12 +32,7 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000
 }));
 
-// Seperated Routes for each Resource
-const usersRoutes = require("./routes/users");
 
-
-
-app.use("/api/users", usersRoutes(knex));
 
 
 app.get("/", (req, res) => {
@@ -65,15 +60,16 @@ app.get("/battleship", (req, res) => {
      return res.render("battleshipIndex");
   })
 
-// Seperated Routes for each Order
+// Api routes
 const orderRoutes = require("./routes/orders");
 const itemRoutes = require("./routes/items");
 const allOrderRoutes = require("./routes/allOrders")
+const resourceRoutes = require("./routes/resources");
 
-// Mount all order routes
+app.use("/api/resources", resourceRoutes(knex));
+
 app.use("/api/orders", orderRoutes(knex));
 
-// Mount all order routes
 app.use("/api/items", itemRoutes(knex));
 
 app.use("/api/allOrders", allOrderRoutes(knex));
@@ -415,14 +411,14 @@ app.get("/tinyApp/login", (req, res) => {
 app.get("/resourcewall", (req, res) => {
     let templateVars = {user: req.session.user};
   if(req.session.user){
-    res.redirect(`/resourceWall_resources/${req.session.user.id}`)
+    res.redirect(`/resourcewall_resources/${req.session.user.id}`)
   } else {
-    res.redirect(`/resourceWall_resources`)
+    res.redirect(`/resourcewall_resources`)
   }
 
   })
 
-app.get("/resourceWall_resources", (req, res) => {
+app.get("/resourcewall_resources", (req, res) => {
   let templateVars = {user: req.session.user};
   res.render("resourceWall_index", templateVars);
 });
