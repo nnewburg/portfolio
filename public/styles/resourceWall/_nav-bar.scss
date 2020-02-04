@@ -1,0 +1,170 @@
+$height-of-contents: 70%;
+$header-size: 16px;
+$background-color: #6e8477;
+$width: 100%;
+$a-color: black;
+
+@media screen and (min-width: 768px) {
+#nav-bar {
+  box-sizing: border-box;
+  width: $width;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Crimson Text', serif;
+  background: $background-color;
+  z-index: 100;
+  padding:0px;
+  position: fixed;
+  top: 0;
+  border-bottom:2px solid #4c4d4e;
+
+  .logo{
+    height: 80px;
+    width: 80px;
+  }
+
+  .avatar{
+    height: 80px;
+    width:80px;
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+
+  .search-bar{
+    width:200px;
+    height: 50%;
+  }
+
+  .btn-light{
+    height: $height-of-contents;
+    border-radius: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+  h1{
+    color:black !important;
+  }
+  .header{
+    font-size: $header-size * 2;
+  }
+
+
+  .right-header{
+    display:flex;
+    margin:0;
+    justify-content: space-evenly;
+    height:$height-of-contents;
+    padding-right: 10px;
+  }
+}
+}
+
+@media screen and (max-width: 768px) and (min-width: 375px){
+  #nav-bar {
+    box-sizing: border-box;
+    width: $width;
+    height: 80px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Crimson Text', serif;
+    background: $background-color;
+    z-index: 100;
+    padding:0px;
+    position: fixed;
+    top: 0;
+    border-bottom:2px solid #4c4d4e;
+
+    .logo{
+      display:none !important;
+      height: 40px;
+      width: 40px;
+    }
+
+    .search-bar{
+      margin-left: 20px;
+      width: 70%;
+      height: 50%;
+      margin:0;
+    }
+
+      .btn-light{
+        height: $height-of-contents;
+        border-radius: 2px;
+        padding-left: 2px;
+        padding-right: 2px;
+      }
+
+      h1{
+        color:black;
+      }
+
+      .header{
+        font-size: $header-size * 2;
+      }
+
+      .right-header{
+        display:flex;
+        margin:0;
+        justify-content: flex-start;
+        height:$height-of-contents;
+        padding-right: 10px;
+      }
+    }
+  }
+
+
+@media screen and (max-width: 375px){
+  #nav-bar {
+    box-sizing: border-box;
+    width: $width;
+    height: 80px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Crimson Text', serif;
+    background: $background-color;
+    z-index: 100;
+    padding:0px;
+    position: fixed;
+    top: 0;
+    border-bottom:2px solid #4c4d4e;
+
+    .logo{
+      display:none !important;
+      height: 40px;
+      width: 40px;
+    }
+
+    .search-bar{
+      margin-left: 20px;
+      width: 70%;
+      height: 50%;
+      margin:0;
+    }
+
+      .btn-light{
+        height: $height-of-contents;
+        border-radius: 2px;
+        padding-left: 2px;
+        padding-right: 2px;
+      }
+
+      .header{
+        display:none !important;
+        font-size: $header-size * 2;
+      }
+
+      .right-header{
+        display:flex;
+        margin:0;
+        justify-content: flex-start;
+        height:$height-of-contents;
+        padding-right: 10px;
+      }
+    }
+  }

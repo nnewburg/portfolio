@@ -1,0 +1,37 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  justify-content: space-evenly;
+  align-content: space-around;
+  font-family: 'Crimson Text', serif;
+  margin: auto;
+  height: 100vw;
+  font-size: 24px;
+  padding-top: 20px;
+  // background: no-repeat url("/images/background.jpg");
+
+
+  .container {
+    background: url("/images/background.png");
+    background-size: cover;
+    background-color: #698f81;
+    margin-top:30px;
+    min-height: 100%;
+    max-width: 100%;
+  }
+
+  .resource-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    align-items: baseline;
+    justify-content: space-evenly;
+    height:100%;
+  }
+}

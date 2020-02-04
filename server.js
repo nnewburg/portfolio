@@ -19,7 +19,8 @@ app.set('views', [path.join(__dirname, 'views'),
                       path.join(__dirname, 'views/barChart/'),
                       path.join(__dirname, 'views/battleship/'),
                       path.join(__dirname, 'views/tinyApp/'),
-                      path.join(__dirname, 'views/pizzaShack/')]);
+                      path.join(__dirname, 'views/pizzaShack/'),
+                      path.join(__dirname, 'views/resourceWall/')]);
 
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -31,7 +32,12 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000
 }));
 
+// Seperated Routes for each Resource
+const usersRoutes = require("./routes/users");
 
+
+
+app.use("/api/users", usersRoutes(knex));
 
 
 app.get("/", (req, res) => {
@@ -53,6 +59,7 @@ app.get("/projects", (req, res) => {
 app.get("/barChart", (req, res) => {
      return res.render("barChartIndex");
   })
+
 
 app.get("/battleship", (req, res) => {
      return res.render("battleshipIndex");
@@ -404,6 +411,22 @@ app.get("/tinyApp/login", (req, res) => {
   let templateVars = {user: req.session.user_id  };
   res.render("login", templateVars);
 });
+
+app.get("/resourcewall", (req, res) => {
+    let templateVars = {user: req.session.user};
+  if(req.session.user){
+    res.redirect(`/resourceWall_resources/${req.session.user.id}`)
+  } else {
+    res.redirect(`/resourceWall_resources`)
+  }
+
+  })
+
+app.get("/resourceWall_resources", (req, res) => {
+  let templateVars = {user: req.session.user};
+  res.render("resourceWall_index", templateVars);
+});
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}!`);

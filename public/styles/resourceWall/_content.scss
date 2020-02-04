@@ -1,0 +1,137 @@
+$left-margin: 10px;
+$poster-backgound: #819277;
+
+.shared-content{
+  height: 30%;
+  font-family: 'Crimson Text', serif;
+  width: auto;
+  max-width: 400px;
+  background: #6e8477;
+  border-radius: 5px;
+  border:2px solid #4c4d4e;
+  margin-top: 20px;
+  margin: 20px;
+  opacity: .9;
+
+  head{
+    background: $poster-backgound;
+    overflow-wrap: break-word;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 10%;
+    border-radius: 5px 5px 0px 0px;
+
+    .user-avatar{
+      height:10px;
+      width:20px;
+      border-radius: 10px;
+      border:2px solid #4B5A56;
+    }
+
+    .title{
+      align-items: center;
+      font-family: 'Crimson Text', serif;
+      margin-left: $left-margin;
+      font-size: 24px;
+      color:black;
+    }
+    .username{
+      color:Black;
+      font-weight: bold;
+      padding-right: 10px;
+    }
+  }
+
+  .post-body{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 75%;
+    align-items: center;
+
+    .post-image{
+      height: 100%;
+      width: 300px;
+      margin:0px;
+      border-top:2px solid #4B5A56;
+      border-bottom:2px solid #4B5A56;
+    }
+
+    p {
+      flex-shrink: 2.25;
+      flex-wrap: wrap;
+      overflow-wrap: break-word;
+      height:20%;
+      width:100%;
+      justify-content: center;
+      background: $poster-backgound;
+      margin:0;
+      padding-left: $left-margin;
+      font-size: 18px;
+      display:flex;
+      align-items: center;
+    }
+  }
+
+  .footer{
+    display:flex;
+    flex-wrap:wrap;
+    align-items: center;
+    justify-content: space-between;
+    // height: 15%;
+
+    .likes{
+      margin-left: $left-margin *2;
+      font-size: 350%;
+      color:#040303;
+      cursor: pointer;
+    }
+    .nOfLikes{
+      color:white;
+      transform: translateX(-65px);
+    }
+
+    .star{
+      color:rgb(238, 238, 62);
+      font-size: 100%;
+      padding: 0px;
+    }
+
+    .star::before{
+      content: '\2606';
+      cursor: pointer;
+    }
+
+    .star.rated::before{
+      content: '\2605';
+    }
+
+    .stars{
+      counter-reset: rateme 0;
+      font-size: 200%;
+    }
+    .star.rated{
+      counter-increment: rateme 1;
+      font-size:16;
+    }
+    .stars::after{
+      content: counter(rateme) '/5';
+      margin-right: 20px;
+      font-size:16;
+    }
+
+    .comments{
+      align-self: flex-end;
+      height: 50%;
+      width: 80%;
+      margin-left: $left-margin *2;
+      margin-bottom: $left-margin *2;
+    }
+
+    .showComments{
+      height: 2rem;
+      margin-right: $left-margin *2;
+    }
+  }
+}
