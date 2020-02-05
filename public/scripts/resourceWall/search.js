@@ -1,11 +1,14 @@
+ $(function( $ ){
+
 $('#search-button').on('click', function(){
   //console.log('clicked')
   const searchKeyWord = $('.search-bar').val();
+  console.log(searchKeyWord)
   $.ajax({
     method: 'GET',
-    url: '/search/'+searchKeyWord,
+    url: '/resourcewall_search/'+searchKeyWord,
     success: function(result){
-      //console.log("results ",result);
+      console.log("results ",result);
       $('.resource-container').empty();
       result.forEach(function(element) {
         rePosts(updatePost(element))
@@ -32,7 +35,7 @@ function updatePost(resource){
 
   let $rating = $('<div>').addClass('stars').attr('data-rating', "3")
   if(avgRating >= 1){
-    var $star1 = $('<span data-star-value="1">').addClass('star rated').html('&nbsp;') 
+    var $star1 = $('<span data-star-value="1">').addClass('star rated').html('&nbsp;')
   } else {
     var $star1 = $('<span data-star-value="1">').addClass('star').html('&nbsp;')
   }
@@ -79,3 +82,5 @@ function updatePost(resource){
 function rePosts(data) {
   data.appendTo($('.resource-container'));
 }
+
+})

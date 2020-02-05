@@ -462,8 +462,78 @@ app.post("/resourcewall_login", (req, res) => {
     });
 });
 
+// app.get('/resourcewall_search/:keyword', (req, res) => {
+//   // console.log("testing ",req.params.keyword);
+//   knex('resourcewall_resources')
+//       .leftJoin('resourcewall_resource_keywords', 'resourcewall_resources.id', 'resourcewall_resource_keywords.resource_id')
+//       .leftJoin('resourcewall_keywords', 'resourcewall_resource_keywords.keyword_id', 'resourcewall_keywords.id')
+//       .join('resourcewall_users', 'resourcewall_resources.user_id', 'resourcewall_users.id')
+//       .leftJoin('resourcewall_resource_ratings', 'resourcewall_resources.id', 'resourcewall_resource_ratings.resource_id')
+//       .leftJoin('resourcewall_comments', 'resourcewall_resources.id', 'resourcewall_comments.resource_id')
+//       .leftJoin('resourcewall_user_likes', 'resourcewall_resources.id', 'resourcewall_user_likes.resource_id')
+//       .select(['resourcewall_resources.title as title', 'resourcewall_resources.url as url', 'resourcewall_users.name as name', 'resourcewall_resources.id as id', 'resourcewall_resources.description as description', 'resourcewall_resources.image as image', knex.raw('array_agg(distinct content) as allComments'), knex.raw('array_agg(distinct resourcewall_keywords.name) as tags')])
+//       .countDistinct('resourcewall_user_likes.id as likes')
+//       .avgDistinct('resourcewall_resource_ratings.rating as ratings')
+//       .groupBy('resourcewall_resources.id', 'resourcewall_users.name')
+//       .orderBy('resourcewall_resources.id', 'DESC')
+//       .where(knex.raw('LOWER(resourcewall_keywords.name) like ?', `%${req.params.keyword}%`))// search by keyword
+//       .orWhere(knex.raw('LOWER(resourcewall_users.name) like ?', `%${req.params.keyword}%`))//search by user's name
+//       .orWhere(knex.raw('LOWER(resourcewall_resources.description) like ?', `%${req.params.keyword}%`))//search by description
+//       .orWhere(knex.raw('LOWER(resourcewall_resources.title) like ?', `%${req.params.keyword}%`))//search by title
+//       .then((results) => {
+//         console.log(results)
+//         res.json(results);
+//       })
+// });
+
+app.get('/resourcewall_search/:keyword', (req, res) => {
+  let keyword = req.params.keyword.toLowerCase()
+  knex('resourcewall_resources')
+      .leftJoin('resourcewall_user_likes', 'resourcewall_resources.id', 'resourcewall_user_likes.resource_id')
+      .join('resourcewall_users', 'resourcewall_resources.user_id', 'resourcewall_users.id')
+      .leftJoin('resourcewall_resource_ratings', 'resourcewall_resources.id', 'resourcewall_resource_ratings.resource_id')
+      .leftJoin('resourcewall_comments', 'resourcewall_resources.id', 'resourcewall_comments.resource_id')
+      .leftJoin('resourcewall_resource_keywords', 'resourcewall_resources.id', 'resourcewall_resource_keywords.resource_id')
+      .leftJoin('resourcewall_keywords', 'resourcewall_resource_keywords.keyword_id', 'resourcewall_keywords.id')
+      .leftJoin('resourcewall_users as user_comments', 'resourcewall_comments.user_id', 'user_comments.id')
+      .select(['resourcewall_resources.title as title', 'resourcewall_resources.url as url', 'resourcewall_users.name as name', 'resourcewall_resources.id as id', 'resourcewall_resources.description as description', 'resourcewall_resources.image as image', knex.raw('array_agg(distinct resourcewall_comments.content) as allComments'), knex.raw('array_agg(distinct resourcewall_keywords.name) as tags')])
+      .countDistinct('resourcewall_user_likes.id as likes')
+      .avg('resourcewall_resource_ratings.rating as ratings')
+      .groupBy('resourcewall_resources.id', 'resourcewall_users.name')
+      .orderBy('resourcewall_resources.id', 'DESC')
+      // .where({'resourcewall_keywords.name': `%${req.params.keyword}%`})
+      //.where(knex.raw('LOWER(resourcewall_keywords.name) like ?', `%${req.params.keyword}%`))// search by keyword
+      // .orWhere(knex.raw('LOWER(resourcewall_users.name) like ?', `%${req.params.keyword}%`))//search by user's name
+      // .orWhere(knex.raw('LOWER(resourcewall_resources.description) like ?', `%${req.params.keyword}%`))//search by description
+      // .orWhere(knex.raw('LOWER(resourcewall_resources.title) like ?', `%${req.params.keyword}%`))//search by title
+      .then((results) => {
+        console.log(keyword)
+        let count = 0;
+        let filteredRes = []
+
+        for(let resource of results){
+          for(let keywords of resource.tags){
+           if(keywords.toLowerCase() == " " + keyword){
+            filteredRes.push(resource)
+            }
+          }
+          console.log(resource.name.toLowerCase())
+            if(resource.name.toLowerCase().indexOf(keyword) !== -1){
+              filteredRes.push(resource)
+            }
+            if(resource.description.toLowerCase().indexOf(keyword) !== -1){
+              filteredRes.push(resource)
+            }
+            if(resource.title.toLowerCase().indexOf(keyword) !== -1){
+              filteredRes.push(resource)
+            }
+        }
 
 
+
+        res.json(filteredRes);
+    });
+});
 
 app.get("/resourcewall_resources/:id", (req, res) => {
   let templateVars = {user: req.session.user};
