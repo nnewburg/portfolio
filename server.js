@@ -462,29 +462,11 @@ app.post("/resourcewall_login", (req, res) => {
     });
 });
 
-// app.get('/resourcewall_search/:keyword', (req, res) => {
-//   // console.log("testing ",req.params.keyword);
-//   knex('resourcewall_resources')
-//       .leftJoin('resourcewall_resource_keywords', 'resourcewall_resources.id', 'resourcewall_resource_keywords.resource_id')
-//       .leftJoin('resourcewall_keywords', 'resourcewall_resource_keywords.keyword_id', 'resourcewall_keywords.id')
-//       .join('resourcewall_users', 'resourcewall_resources.user_id', 'resourcewall_users.id')
-//       .leftJoin('resourcewall_resource_ratings', 'resourcewall_resources.id', 'resourcewall_resource_ratings.resource_id')
-//       .leftJoin('resourcewall_comments', 'resourcewall_resources.id', 'resourcewall_comments.resource_id')
-//       .leftJoin('resourcewall_user_likes', 'resourcewall_resources.id', 'resourcewall_user_likes.resource_id')
-//       .select(['resourcewall_resources.title as title', 'resourcewall_resources.url as url', 'resourcewall_users.name as name', 'resourcewall_resources.id as id', 'resourcewall_resources.description as description', 'resourcewall_resources.image as image', knex.raw('array_agg(distinct content) as allComments'), knex.raw('array_agg(distinct resourcewall_keywords.name) as tags')])
-//       .countDistinct('resourcewall_user_likes.id as likes')
-//       .avgDistinct('resourcewall_resource_ratings.rating as ratings')
-//       .groupBy('resourcewall_resources.id', 'resourcewall_users.name')
-//       .orderBy('resourcewall_resources.id', 'DESC')
-//       .where(knex.raw('LOWER(resourcewall_keywords.name) like ?', `%${req.params.keyword}%`))// search by keyword
-//       .orWhere(knex.raw('LOWER(resourcewall_users.name) like ?', `%${req.params.keyword}%`))//search by user's name
-//       .orWhere(knex.raw('LOWER(resourcewall_resources.description) like ?', `%${req.params.keyword}%`))//search by description
-//       .orWhere(knex.raw('LOWER(resourcewall_resources.title) like ?', `%${req.params.keyword}%`))//search by title
-//       .then((results) => {
-//         console.log(results)
-//         res.json(results);
-//       })
-// });
+app.post("/resourcewall_resources/:id/newResource", (req, res) => {
+  queries.addResource(knex, req.body, req.session.user.id ).then(result => {
+    res.redirect(`/resourcewall_resources/${req.session.user.id}`);
+  });
+});
 
 app.get('/resourcewall_search/:keyword', (req, res) => {
   let keyword = req.params.keyword.toLowerCase()

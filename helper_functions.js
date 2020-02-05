@@ -15,12 +15,12 @@ function addResource(client, input, userId){
         .returning('id')
         .then(function (rid) {
           console.log('rid ',rid)
-          return kid = client('keywords')
+          return kid = client('resourcewall_keywords')
                   .insert({name:input.keyword})
                   .returning('id')
                   .then(function (kid) {
                     console.log('kid ', kid)
-                    return client('resource_keywords')
+                    return client('resourcewall_resource_keywords')
                             .insert({resource_id: rid[0], keyword_id: kid[0]})
                   })
         }).catch((error) => {
