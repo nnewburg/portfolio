@@ -32,6 +32,21 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000
 }));
 
+const queries = require('./helper_functions');
+
+// Api routes
+const orderRoutes = require("./routes/orders");
+const itemRoutes = require("./routes/items");
+const allOrderRoutes = require("./routes/allOrders")
+const resourceRoutes = require("./routes/resources");
+
+app.use("/api/resources", resourceRoutes(knex));
+
+app.use("/api/orders", orderRoutes(knex));
+
+app.use("/api/items", itemRoutes(knex));
+
+app.use("/api/allOrders", allOrderRoutes(knex));
 
 
 
@@ -60,19 +75,6 @@ app.get("/battleship", (req, res) => {
      return res.render("battleshipIndex");
   })
 
-// Api routes
-const orderRoutes = require("./routes/orders");
-const itemRoutes = require("./routes/items");
-const allOrderRoutes = require("./routes/allOrders")
-const resourceRoutes = require("./routes/resources");
-
-app.use("/api/resources", resourceRoutes(knex));
-
-app.use("/api/orders", orderRoutes(knex));
-
-app.use("/api/items", itemRoutes(knex));
-
-app.use("/api/allOrders", allOrderRoutes(knex));
 
 
 
@@ -422,6 +424,52 @@ app.get("/resourcewall_resources", (req, res) => {
   let templateVars = {user: req.session.user};
   res.render("resourceWall_index", templateVars);
 });
+
+//Register page
+app.get("/resourcewall_register", (req, res) => {
+  let templateVars = {user: req.session.user};
+  res.render("resourcewall_register", templateVars);
+});
+
+app.post("/resourcewall_register", (req, res) => {
+  queries.addUser(knex, req.body).then(result => {
+    knex('resourcewall_users').where({email: req.body.email}).then(result  => {
+      req.session.user = result[0];
+      res.redirect(`/resourcewall_resources/${req.session.user.id}`);
+    });
+  });
+});
+
+app.post("/resourcewall_logout", (req, res) => {
+  req.session.user = null;
+  res.redirect('/resourcewall')
+});
+
+//Login page
+app.get("/resourcewall_login", (req, res) => {
+  let templateVars = {user: req.session.user};
+  res.render("resourceWall_login", templateVars);
+});
+
+app.post("/resourcewall_login", (req, res) => {
+   knex('resourcewall_users').where({email: req.body.email}).then(result  => {
+    if(result[0]){
+      req.session.user = result[0];
+      res.redirect(`/resourcewall_resources/${req.session.user.id}`);
+    } else {
+      res.redirect('/resourcewall');
+    }
+    });
+});
+
+
+
+
+app.get("/resourcewall_resources/:id", (req, res) => {
+  let templateVars = {user: req.session.user};
+  res.render('my_glass_of_water', templateVars)
+});
+
 
 
 app.listen(PORT, () => {

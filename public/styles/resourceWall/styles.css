@@ -236,7 +236,7 @@ body .resource-container {
 }
 
 #users {
-  background: no-repeat url("/images/background.png");
+  background: no-repeat url("../../images/resourceWall/background.png");
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -489,7 +489,7 @@ body .resource-container {
   padding-bottom: 10px;
   margin-left: 20%;
   margin-right: 20%;
-  opacity: 50%;
+
 }
 
 #new-resource-form label {
