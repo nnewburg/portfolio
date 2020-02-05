@@ -9,7 +9,7 @@ $('.container').on('click', '.showComments', function(){
     let content = $(this).parent().find('.comments').val()
 
           $.ajax({
-            url: `/comments/${resourceId}/${userId}`,
+            url: `/resourcewall_comments/${resourceId}/${userId}`,
             type: "PUT",
             data: {content: content}
             })
@@ -20,7 +20,7 @@ $('.container').on('click', '.showComments', function(){
           })
 
           $.ajax({
-            url: `/comments/${resourceId}/${userId}`,
+            url: `/resourcewall_comments/${resourceId}/${userId}`,
             type: "GET"
             })
           .done(function(res){

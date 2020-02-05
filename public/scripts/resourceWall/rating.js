@@ -13,7 +13,7 @@ $('.container').on('click', '.star', function(e) {
 
     $.ajax({
       method: 'PUT',
-      url: `/ratings/${resourceId}/${userId}`,
+      url: `/resourcewall_ratings/${resourceId}/${userId}`,
       data: {myRating: starValue},
       success: function(result){
         console.log('post')

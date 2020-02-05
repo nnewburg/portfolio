@@ -507,8 +507,6 @@ app.get('/resourcewall_search/:keyword', (req, res) => {
       // .orWhere(knex.raw('LOWER(resourcewall_resources.description) like ?', `%${req.params.keyword}%`))//search by description
       // .orWhere(knex.raw('LOWER(resourcewall_resources.title) like ?', `%${req.params.keyword}%`))//search by title
       .then((results) => {
-        console.log(keyword)
-        let count = 0;
         let filteredRes = []
 
         for(let resource of results){
@@ -528,18 +526,100 @@ app.get('/resourcewall_search/:keyword', (req, res) => {
               filteredRes.push(resource)
             }
         }
-
-
-
         res.json(filteredRes);
     });
 });
+
+app.put('/resourcewall_unlike/:resourceId/:userId', (req, res) => {
+  if(req.session.user){
+    knex('resourcewall_user_likes').where('user_id', req.session.user.id)
+    .andWhere('resource_id', req.params.resourceId)
+    .del()
+    .then((results) => {
+      res.json(results);
+    });
+  }
+});
+
+app.put('/resourcewall_like/:resourceId/:userId', (req, res) => {
+  if(req.session.user){
+    knex('resourcewall_user_likes').insert({'user_id': req.session.user.id, 'resource_id': req.params.resourceId})
+    .then((results) => {
+      res.json(results);
+    });
+  }
+});
+
+app.get('/resourcewall_like/:resourceId/:userId', (req, res) => {
+  knex('resourcewall_user_likes').where('resource_id', req.params.resourceId)
+  .andWhere('user_id', req.params.userId)
+  .then((results) => {
+    let counter = 0;
+    results.forEach(() => {return counter++})
+    res.json(counter);
+  });
+});
+
+
+app.get('/resourcewall_liked/:userId', (req, res) => {
+  knex('resources')
+  .rightJoin('user_likes', 'resources.id', 'user_likes.resource_id')
+  .rightJoin('users', 'user_likes.user_id', 'users.id')
+  //.leftJoin('resource_keywords', 'resources.id', 'resource_keywords.resource_id')
+  //.leftJoin('keywords', 'resource_keywords.keyword_id', 'keywords.id')
+  //.leftJoin('resource_ratings', 'resources.id', 'resource_ratings.resource_id')
+  //.leftJoin('comments', 'resources.id', 'comments.resource_id')
+  .select([knex.raw('array_agg(distinct resources.title) as title'),
+    knex.raw('array_agg(distinct resources.url) as url'),
+    knex.raw('array_agg(distinct users.name) as name'),
+    knex.raw('array_agg(distinct resources.id) as id'),
+    knex.raw('array_agg(distinct resources.description) as description'),
+    knex.raw('array_agg(distinct resources.image) as image')])
+    //knex.raw('array_agg(distinct content) as allComments'),
+    //knex.raw('array_agg(distinct keywords.name) as tags')])
+  .countDistinct('user_likes.id as likes')
+  //.avgDistinct('resource_ratings.rating as ratings')
+  .groupBy('resources.id', 'users.name', 'user_likes.id', 'users.id')
+  .orderBy('resources.id', 'DESC')
+  .where('user_likes.user_id', req.params.userId)
+  .then((results) => {
+    res.json(results);
+  });
+})
+
+
+app.get('/resourcewall_comments/:resourceId/:userId', (req, res) => {
+  knex.select('resourcewall_users.name', 'resourcewall_comments.content').from('resourcewall_comments')
+      .join('resourcewall_users', 'resourcewall_comments.user_id', 'resourcewall_users.id')
+      .where('resourcewall_comments.resource_id', req.params.resourceId) //search by user's name
+      .then((results) => {
+        res.json(results);
+      })
+})
+
+
+app.put('/resourcewall_comments/:resourceId/:userId', (req, res) => {
+  knex('resourcewall_comments').insert({'user_id': req.session.user.id, 'resource_id': req.params.resourceId, 'content': req.body.content})
+  .then((results) => {
+    res.json(results);
+  });
+})
+
+
 
 app.get("/resourcewall_resources/:id", (req, res) => {
   let templateVars = {user: req.session.user};
   res.render('my_glass_of_water', templateVars)
 });
 
+
+app.put('/resourcewall_ratings/:resourceId/:userId', (req, res) => {
+  knex('resourcewall_resource_ratings')
+  .insert({'rating': req.body.myRating, 'user_id': req.params.userId, 'resource_id': req.params.resourceId})
+  .then((results) => {
+    res.json(results);
+  });
+})
 
 
 app.listen(PORT, () => {

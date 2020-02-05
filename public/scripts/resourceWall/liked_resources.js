@@ -4,7 +4,7 @@ $('.avatar').on('click', function(){
   console.log(userId)
   $.ajax({
     method: 'GET',
-    url: `/liked/${userId}`,
+    url: `/resourcewall_liked/${userId}`,
     success: function(result){
       $('.resource-container').empty();
       result.forEach(function(element) {
@@ -32,7 +32,7 @@ function showLikedPost(resource){
 
   let $rating = $('<div>').addClass('stars').attr('data-rating', "3")
   if(avgRating >= 1){
-    var $star1 = $('<span data-star-value="1">').addClass('star rated').html('&nbsp;') 
+    var $star1 = $('<span data-star-value="1">').addClass('star rated').html('&nbsp;')
   } else {
     var $star1 = $('<span data-star-value="1">').addClass('star').html('&nbsp;')
   }
