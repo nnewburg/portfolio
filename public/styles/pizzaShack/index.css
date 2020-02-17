@@ -1,3 +1,21 @@
+@media only screen and (max-width:  768px){
+
+#main{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border: 2px black solid;
+  margin: 10%;
+  margin-top: 20%;
+  width: 60%;
+  background-color: #f6f6f6;
+  box-shadow: 5px 10px 8px 10px #888888;
+  font-family: 'Mansalva', cursive;
+  font-size: 20px;
+}
+
+}
+
 body{
     margin: 0;
     padding: 0;
