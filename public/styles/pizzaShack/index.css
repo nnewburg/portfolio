@@ -257,7 +257,7 @@ body{
     margin-right: 1rem;
 }
 
-@media only screen and (max-width:  359px){
+@media only screen and (max-width:  500px){
 
 #main{
   display: flex;
@@ -266,7 +266,7 @@ body{
   border: 2px black solid;
   margin: 20% 10% 10% 10%;
   width: 60%;
-  background-color: #f6f6f6;
+  background-color: red;
   box-shadow: 5px 10px 8px 10px #888888;
   font-family: 'Mansalva', cursive;
   font-size: 20px;
