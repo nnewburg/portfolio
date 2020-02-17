@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 const cookieSession = require('cookie-session');
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
-const PORT = 80;
+const PORT = 8080;
 const path = require('path');
 const bcrypt = require('bcrypt');
 
