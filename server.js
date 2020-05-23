@@ -55,7 +55,7 @@ app.get("/", (req, res) => {
   })
 
 app.get("/aboutme", (req, res) => {
-     return res.render("index");
+     return res.render("bio");
   })
 
 app.get("/resume", (req, res) => {
