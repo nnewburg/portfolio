@@ -2,6 +2,25 @@ body{
   background-color: white;
 }
 
+#landingContainer{
+  width: 800px;
+  margin: 0 auto;
+}
+
+
+#landingBio{
+  display: inline-block;
+  margin: 35px auto;
+  width: 400px;
+  font-size: 22px;
+}
+
+#contact{
+  display: inline-block;
+  vertical-align: top;
+  margin: 35px 20px;
+}
+
 #bioSwitch{
   display: inline-block;
   margin-left: 1em;

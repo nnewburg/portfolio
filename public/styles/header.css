@@ -19,17 +19,54 @@
 
 #header #nav {
   background-color: white;
-   border-bottom: solid 1px rgba(0,0,0,.125);
+  border-bottom: solid 1px rgba(0,0,0,.125);
   height: 60px;
 }
 
 #header #profileCard {
+  text-align: center;
   background-color: #f5f8fa;
-  height: 348px;
+  height: 408px;
   width: 100%;
   padding: 2rem;
 }
 
+#mainNameTitle{
+  font-family: 'Kulim Park', sans-serif;
+  display: inline-block;
+  width: 700px;
+  font-size: 2em;
+  margin: 0 auto;
+}
+
+h1{
+  font-size: 2em;
+  letter-spacing: 5px;
+}
+
+#description{
+  margin: 0 auto;
+  color: #2e2e2e;
+  width: 600px;
+}
+
+#description h2{
+  font-family: 'helvetica neue', 'Helvetica' ,sans-serif;
+  color: #9ea8ad
+}
+
+#headShot {
+  display: inline-block;
+  border: solid 1px black;
+  border-radius: 50%;
+  margin: 0 45%;
+}
+
+#headShot img {
+  margin: 0 auto;
+  padding: 0.4em;
+  border-radius: 50%;
+}
 
 a {
   float: right;
