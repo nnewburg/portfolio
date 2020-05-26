@@ -21,6 +21,23 @@ body{
   margin: 35px 20px;
 }
 
+#contactList{
+  list-style: none;
+  padding-left: 0;
+}
+
+#gitHub{
+  text-decoration: none;
+  color: inherit;
+  margin: 18px 0 0 25px;
+}
+
+#linkedin{
+  text-decoration: none;
+  color: inherit;
+  margin: 18px 0 0 30px;
+}
+
 #bioSwitch{
   display: inline-block;
   margin-left: 1em;

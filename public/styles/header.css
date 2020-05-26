@@ -68,7 +68,7 @@ h1{
   border-radius: 50%;
 }
 
-a {
+.sectionLink {
   float: right;
   text-align: center;
   padding-top: 0.50em;
@@ -81,9 +81,14 @@ a {
   text-decoration: none;
 }
 
- a:hover {
+ .sectionLink:hover {
   background-color: #bae6ff;
   color: #0074d9;
   text-decoration: none;
   opacity: 1;
+}
+
+#nameTitle a{
+  color: #2e2e2e;
+  text-decoration: none;
 }
