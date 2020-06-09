@@ -11,10 +11,7 @@
  font-family: 'Kulim Park', sans-serif;
  position: relative;
  float: left;
-}
-
-#header #nameTitle h2{
-  padding: 13px;
+ padding: 13px;
 }
 
 #header #nav {
@@ -31,6 +28,15 @@
   padding: 2rem;
 }
 
+.sectionCard {
+  text-align: center;
+  background-color: #f5f8fa;
+  height: 175px;
+  width: 100%;
+  padding: 2rem;
+}
+
+
 #mainNameTitle{
   font-family: 'Kulim Park', sans-serif;
   display: inline-block;
@@ -39,9 +45,22 @@
   margin: 0 auto;
 }
 
-h1{
+.contentContainer{
+  font-family: 'Kulim Park', sans-serif;
+  text-align: left;
+  margin-left: 15%;
+  width: 700px;
+  color: #2e2e2e;
+}
+
+.contentContainer h2{
+  color: #9ea8ad
+}
+
+#nav h1{
   font-size: 2em;
   letter-spacing: 5px;
+  color: #2e2e2e;
 }
 
 #description{
@@ -52,7 +71,7 @@ h1{
 
 #description h2{
   font-family: 'helvetica neue', 'Helvetica' ,sans-serif;
-  color: #9ea8ad
+  color: #9ea8ad;
 }
 
 #headShot {
@@ -89,6 +108,17 @@ h1{
 }
 
 #nameTitle a{
+  color: #2e2e2e;
+  text-decoration: none;
+}
+
+.sectionCard a:hover{
+  color: #0074d9;
+  text-decoration: none;
+  opacity: 1;
+}
+
+.sectionCard a{
   color: #2e2e2e;
   text-decoration: none;
 }

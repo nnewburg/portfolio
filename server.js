@@ -51,19 +51,19 @@ app.use("/api/allOrders", allOrderRoutes(knex));
 
 
 app.get("/", (req, res) => {
-     return res.render("index");
+     return res.render("index", {page: 'landing'});
   })
 
 app.get("/aboutme", (req, res) => {
-     return res.render("bio");
+     return res.render("bio", {page: 'Biography'});
   })
 
 app.get("/resume", (req, res) => {
-     return res.render("resume");
+     return res.render("resume", {page: 'Resume'});
   })
 
 app.get("/projects", (req, res) => {
-     return res.render("projects");
+     return res.render("projects", {page: 'Projects'});
   })
 
 app.get("/barChart", (req, res) => {

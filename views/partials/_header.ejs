@@ -8,7 +8,7 @@
     <a class="sectionLink" href="/projects">Projects</a>
     <a class="sectionLink" href="/resume">CV/Resume</a>
   </div>
-
+  <% if(page === 'landing'){ %>
   <div id="profileCard">
     <div id ="headShot">
       <img height="150px" width="150px" src="../../../images/me.png">
@@ -20,5 +20,26 @@
       <h2>Years of Web-Development experience independently or in a team</h2>
     </div>
   </div>
-
+  <% }else if(page === 'Resume'){ %>
+  <div class="sectionCard">
+    <div class="contentContainer">
+      <h1><a href="/resume"> <%= page %> </a></h1>
+      <h2>Avaliable in a downloadable PDF just click</h2>
+    </div>
+  </div>
+  <% }else if(page === 'Biography'){ %>
+  <div class="sectionCard">
+    <div class="contentContainer">
+      <h1><a href="/aboutme"> <%= page %> </a></h1>
+      <h2>Read about me in much more detail, organized into three sections</h2>
+    </div>
+  </div>
+  <% }else if(page === 'Projects'){ %>
+  <div class="sectionCard">
+    <div class="contentContainer">
+      <h1><a href="/projects"> <%= page %> </a></h1>
+      <h2>Test out my projects in a live demo, or read the Github documentation for their code</h2>
+    </div>
+  </div>
+  <% } %>
 </div>
