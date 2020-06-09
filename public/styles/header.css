@@ -1,3 +1,5 @@
+/*Main navigation bar present on every page, except project demo's*/
+
 #header {
   color: #2e2e2e;
   display: block;
@@ -7,20 +9,26 @@
 
 }
 
-#header #nameTitle{
+#nameTitle{
  font-family: 'Kulim Park', sans-serif;
  position: relative;
  float: left;
  padding: 13px;
 }
 
-#header #nav {
+#nav {
   background-color: white;
   border-bottom: solid 1px rgba(0,0,0,.125);
   height: 60px;
 }
 
-#header #profileCard {
+h1 {
+  font-family: 'Kulim Park', sans-serif;
+}
+
+/* Landing page main container */
+
+#profileCard {
   text-align: center;
   background-color: #f5f8fa;
   height: 408px;
@@ -28,48 +36,9 @@
   padding: 2rem;
 }
 
-.sectionCard {
-  text-align: center;
-  background-color: #f5f8fa;
-  height: 175px;
-  width: 100%;
-  padding: 2rem;
-}
-
-
-#mainNameTitle{
-  font-family: 'Kulim Park', sans-serif;
-  display: inline-block;
-  width: 700px;
-  font-size: 2em;
-  margin: 0 auto;
-}
-
-.contentContainer{
-  font-family: 'Kulim Park', sans-serif;
-  text-align: left;
-  margin-left: 15%;
-  width: 700px;
-  color: #2e2e2e;
-}
-
-.contentContainer h2{
-  color: #9ea8ad
-}
-
-#nav h1{
-  font-size: 2em;
-  letter-spacing: 5px;
-  color: #2e2e2e;
-}
-
 #description{
   margin: 0 auto;
-  color: #2e2e2e;
   width: 600px;
-}
-
-#description h2{
   font-family: 'helvetica neue', 'Helvetica' ,sans-serif;
   color: #9ea8ad;
 }
@@ -85,6 +54,11 @@
   margin: 0 auto;
   padding: 0.4em;
   border-radius: 50%;
+}
+
+#nameTitle a{
+  color: #2e2e2e;
+  text-decoration: none;
 }
 
 .sectionLink {
@@ -107,9 +81,26 @@
   opacity: 1;
 }
 
-#nameTitle a{
+/*Individual content containers depending on the page*/
+
+.sectionCard {
+  text-align: center;
+  background-color: #f5f8fa;
+  height: 175px;
+  width: 100%;
+  padding: 2rem;
+}
+
+.sectionContainer{
+  font-family: 'Kulim Park', sans-serif;
+  text-align: left;
+  margin-left: 15%;
+  width: 700px;
   color: #2e2e2e;
-  text-decoration: none;
+}
+
+.sectionContainer h2{
+  color: #9ea8ad;
 }
 
 .sectionCard a:hover{
