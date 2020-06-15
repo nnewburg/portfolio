@@ -1,26 +1,24 @@
 body{
-   background-color: #7cccf7;
+   background-color: white;
+
 }
 
 #projectsCont{
-  margin: 5% 10% 10% 10%;
-  border: 3px black solid;
-  display: flex;
-  flex-flow: row wrap;
-  background-color: #9494b8;
- justify-content: space-around;
+width: 70%;
+margin: 25px auto 0 auto;
 
 }
 
 .card{
 /*  display: inline-block;*/
 margin: 2%;
+display: block;
 
 }
 
 
 .card img {
-  height: 200px;
+  height: 350px;
   width: 100%;
   border: 1px solid gray;
 }
