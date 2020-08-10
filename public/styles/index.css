@@ -2,11 +2,14 @@ body{
   background-color: white;
 }
 
-#landingContainer{
-  width: 800px;
-  margin: 0 auto;
+#main{
+  width: 100%;
 }
 
+#landingContainer{
+  max-width: 800px;
+  margin: 0 auto;
+}
 
 #landingBio{
   display: inline-block;
@@ -36,4 +39,24 @@ body{
   text-decoration: none;
   color: inherit;
   margin: 18px 0 0 30px;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+  #landingContainer{
+    margin: 0 5%;
+  }
+
+  #landingBio{
+    width: auto;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+
+  #landingContainer{
+    margin-left: 5%;
+  }
+
 }

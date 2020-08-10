@@ -9,6 +9,10 @@
 
 }
 
+.navbar{
+  font-family: 'Kulim Park', sans-serif;
+}
+
 #nameTitle{
  font-family: 'Kulim Park', sans-serif;
  position: relative;
@@ -38,7 +42,7 @@ h1 {
 
 #description{
   margin: 0 auto;
-  width: 600px;
+  width: 100%;
   font-family: 'helvetica neue', 'Helvetica' ,sans-serif;
   color: #9ea8ad;
 }
@@ -47,7 +51,7 @@ h1 {
   display: inline-block;
   border: solid 1px black;
   border-radius: 50%;
-  margin: 0 45%;
+  margin: 0 auto;
 }
 
 #headShot img {
@@ -112,4 +116,38 @@ h1 {
 .sectionCard a{
   color: #2e2e2e;
   text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+
+  h2{
+    font-size: 1.5rem;
+  }
+
+  .sectionContainer{
+    width: 100%;
+    margin-left: 0px;
+
+  }
+
+  .sectionCard{
+    height: 225px;
+  }
+
+}
+
+@media only screen and (max-width: 800px) {
+
+  h2{
+    font-size: 1.5rem;
+  }
+
+  .sectionContainer{
+    width: 100%;
+    margin-left: 0px;
+
+  }
+
+
+
 }

@@ -41,3 +41,13 @@
   border-left: solid 2px rgba(0,0,0,.125);
   border-right: solid 2px rgba(0,0,0,.125);
 }
+
+@media only screen and (max-width: 800px) {
+
+  #bioContainer{
+
+    width: 95%;
+  }
+
+
+}

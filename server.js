@@ -48,8 +48,6 @@ app.use("/api/items", itemRoutes(knex));
 
 app.use("/api/allOrders", allOrderRoutes(knex));
 
-
-
 app.get("/", (req, res) => {
      return res.render("index", {page: 'landing'});
   })
