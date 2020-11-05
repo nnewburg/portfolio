@@ -1,6 +1,6 @@
 
 
-body{
+body {
     margin: 0;
     padding: 0;
     display: flex;
@@ -9,7 +9,7 @@ body{
 }
 
 
-.orderDiv{
+.orderDiv {
     position: relative;
     border: 2px black solid;
     background-color: white;
@@ -18,8 +18,8 @@ body{
 
 
 
-#nav{
-    justify-content: space-between;
+#nav {
+    justify-content: center;
     position: fixed;
     display: flex;
     color: white;
@@ -34,7 +34,7 @@ body{
     box-shadow: 5px 10px 8px 10px #888888
 }
 
-#botNav{
+#botNav {
      justify-content: center;
     position: fixed;
     display: flex;
@@ -50,7 +50,7 @@ body{
     box-shadow: 5px 10px 8px 10px #888888
 }
 
-#botNav ul{
+#botNav ul {
 
     list-style-type: none;
     margin: 0;
@@ -68,7 +68,7 @@ body{
 
 
 
-#main{
+#main {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -81,7 +81,7 @@ body{
   font-size: 20px;
 }
 
-#adminMain{
+#adminMain {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -94,12 +94,12 @@ body{
   font-size: 15px;
 }
 
-#loginContainer{
+#loginContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   border: 2px black solid;
-  margin: 10%;
+  margin: 20% 10% 10% 10%;
   width: 38%;
   background-color: #f6f6f6;
   box-shadow: 5px 10px 8px 10px #888888;
@@ -107,7 +107,7 @@ body{
   font-size: 20px;
 }
 
-.formMain{
+.formMain {
   padding: 1rem;
   display: flex;
   flex-wrap: wrap;
@@ -116,16 +116,16 @@ body{
   font-size: 20px;
 }
 
-.formInp{
+.formInp {
     float:right;
 }
 
-.formDiv{
+.formDiv {
     width: 100%;
     margin-bottom: 2rem;
 }
 
-#itemsOrdCheckout{
+#itemsOrdCheckout {
 
   background-image: linear-gradient(to top right, yellow, red);
   border-radius: 8%;
@@ -137,12 +137,12 @@ body{
   box-shadow: 5px 10px 8px 10px #888888
 }
 
-.orderPrice{
+.orderPrice {
     display: inline;
      margin-left: 4rem;
 }
 
-.card{
+.card {
 
     width: 27vw;
     margin-top: 10px;
@@ -157,11 +157,20 @@ body{
     object-fit: cover;
 }
 
-#login{
-    padding-right: 2rem;
+#login {
+    position: absolute;
+    right: 0;
 }
 
-#rightContainer{
+#backLink {
+
+  position: absolute;
+  top: 98px;
+  left: 20px
+}
+
+
+#rightContainer {
     display: flex;
     flex-direction: row;
 }
@@ -170,12 +179,12 @@ body{
     margin-top: 1rem;
 }
 
-#logo{
+#logo {
     font-family: 'Fascinate';
     font-size: 2.5rem;
 }
 
-#myOrder{
+#myOrder {
 
     position: fixed;
     height: fit-content;
@@ -215,40 +224,40 @@ body{
 
 /
 
-.adminItems{
+.adminItems {
     display: inline-block;
 }
 
-.adminTel{
+.adminTel {
   margin-left: 2rem;
 }
 
-.adminDesc{
+.adminDesc {
   position: absolute;
   left: 40%;
 }
 
-.adminCost{
+.adminCost {
   position: absolute;
   right: 0;
 }
 
-#orderItemsContainer{
+#orderItemsContainer {
     width: 80%;
     margin-left: 10%;
 }
 
-.itemInputBox{
+.itemInputBox {
     margin-left: 1em;
     height: 35%;
     width: 30%;
 }
 
-.itemPrice{
+.itemPrice {
     margin-bottom: 0px;
 }
 
-.adminOrdDiv{
+.adminOrdDiv {
     position: relative;
     display: flex;
     /*justify-content: space-between;*/
@@ -257,19 +266,117 @@ body{
     margin-right: 1rem;
 }
 
-@media only screen and (max-width:  100px){
+@media only screen and (max-width:  600px){
 
-#main{
+  #logo {
+    font-size: 2.0rem;
+  }
+
+  #logoImg {
+    width: 48px;
+    height: 48px
+  }
+
+  #main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border: 2px black solid;
+    margin: 63% 10% 33% 10%;
+    width: 80%;
+    background-color: #f6f6f6;
+    box-shadow: 5px 10px 8px 10px #888888;
+    font-family: 'Mansalva', cursive;
+    font-size: 20px;
+  }
+
+  #nav {
+    position: fixed;
+    display: flex;
+    color: white;
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    height: 10%;
+    background-color: red;
+    top: 0;
+    z-index: 999;
+    vertical-align: middle;
+    box-shadow: 5px 10px 8px 10px #888888
+  }
+
+  #login {
+    position: relative;
+  }
+
+  #myOrder {
+
+    position: absolute;
+    top: 60px;
+    left: -244px;
+    padding: 0.4rem;
+    width: 300px;
+    border: 2px solid black;
+    margin-right: 5%;
+    background-color: #f6f6f6;
+
+  }
+
+  .card {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .card-img-top {
+    width: 100%;
+    height: 46%;
+    object-fit: cover;
+}
+
+#botNav {
+    justify-content: center;
+    position: fixed;
+    display: flex;
+    height: 80px;
+    color: white;
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    background-color: gray;
+    bottom: 0;
+    z-index: 999;
+    vertical-align: middle;
+    box-shadow: 5px 10px 8px 10px #888888
+}
+
+#botNavList {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#loginContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   border: 2px black solid;
-  margin: 20% 10% 10% 10%;
-  width: 60%;
-  background-color: red;
+  margin: 35% 10% 10% 10%;
+  width: 80%;
+  background-color: #f6f6f6;
   box-shadow: 5px 10px 8px 10px #888888;
   font-family: 'Mansalva', cursive;
   font-size: 20px;
+}
+
+#backLink {
+
+  position: absolute;
+  top: 98px;
+  left: 20px
 }
 
 }

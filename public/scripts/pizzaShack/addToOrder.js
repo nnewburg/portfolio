@@ -12,6 +12,9 @@ $(document).on("click", '.addItem', function (e) {
             id: e.target.id, // < note use of 'this' here
             access_token: $("#access_token").val()
         },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+          alert("Please sign in to begin your order");
+        },
         success: function(result) {
                 $.ajax({
                      method: "GET",
@@ -67,6 +70,7 @@ $(document).on("click", '.addItem', function (e) {
 })
 
  function addItem(resource,price){
+
 
     let value = parseInt($(`#${resource}Cart`).val())
     $(`#${resource}Cart`).val(parseInt(value+1))

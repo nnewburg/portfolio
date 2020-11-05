@@ -158,6 +158,7 @@ app.post("/pizzashack/logout", (req, res) => {
 })
 
 app.post("/pizzashack/addItem", (req, res) => {
+
   console.log("added ---" + req.body.id)
   knex("pizzashack_orders").where({user_id: req.session.user.id, currentOrder: true}).then(result =>{
     if(!result[0]){
