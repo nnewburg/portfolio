@@ -32,9 +32,6 @@ for(product of items){
       }
 
 
-console.log("derpity" + price)
-
-
 let quantity = $(`#${item}Cart`).val()
 
 decrementTotalCost((quantity*price))

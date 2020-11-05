@@ -9,7 +9,7 @@
            method: "GET",
             url: "/api/items"
         }).done ((items) => {
-    console.log("check" + resources)
+
     if(resources[0]){
     let price = 0;
     let totalPrice = 0;
@@ -36,7 +36,7 @@
         }
       }
 
-      console.log(amount)
+
 
       renderOrders(createOrder(resource,amount,price))
     }
